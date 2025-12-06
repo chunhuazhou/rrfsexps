@@ -1,5 +1,6 @@
 # rrfsexps
-Collection of rrfsv2 exp and configuration files
+Collection of rrfsv2 exp and configuration files    
+**NOTE**: All exp files in this repo are examples, not necessarily up-to-the-date. Compare them with the official ones in the latest rrfs-workflow before setting up an experiment.
 
 1. All are welcome to create PRs and commit their RRFSv2 exp setup files to this repo.   
 
