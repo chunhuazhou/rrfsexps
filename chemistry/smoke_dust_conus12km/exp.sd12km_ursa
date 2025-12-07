@@ -16,6 +16,7 @@ export ZETA_LEVELS="L65.txt"
 #
 export DO_IODA=true
 export DO_JEDI=true
+#export SNUDGETYPES="GGG" # G=gsd_update_soiltq from GSI; P=2022 J Hydro paper; chars=SoilT,SnowT,SoilQ
 export DO_NONVAR_CLOUD_ANA=false
 export COLDSTART_CYCS_DO_DA=false
 export DO_CHEMISTRY=true
@@ -70,7 +71,6 @@ export NODES_JEDIVAR="<nodes>4:ppn=20</nodes>"
 export NODES_IODA_MRMS_REFL="<nodes>1:ppn=40</nodes>"
 #
 export WALLTIME_FCST="2:30:00"
-export WALLTIME_SAVE_FCST="2:30:00"
 export WALLTIME_MPASSIT="1:00:00"
 export WALLTIME_UPP="1:00:00"
 export WALLTIME_JEDIVAR="00:30:00"
@@ -81,8 +81,8 @@ export KEEPDATA=NO
 #
 # set up IC, LBC sources and A/Q/P/R information
 export IC_EXTRN_MDL_NAME="GFS"
-export IC_EXTRN_MDL_FILENAME_PATTERN="gfs.@Y@m@d/@H/gfs.t@Hz.pgrb2.0p25.ffHHH"
-export IC_EXTRN_MDL_FILENAME_PATTERN_B="gfs.@Y@m@d/@H/gfs.t@Hz.pgrb2b.0p25.ffHHH"
+export IC_EXTRN_MDL_FILENAME_PATTERN="gfs.@Y@m@d/@H/gfs.t@Hz.pgrb2.0p25.f^HHH^"
+export IC_EXTRN_MDL_FILENAME_PATTERN_B="gfs.@Y@m@d/@H/gfs.t@Hz.pgrb2b.0p25.f^HHH^"
 export LBC_EXTRN_MDL_NAME=${IC_EXTRN_MDL_NAME}
 export LBC_EXTRN_MDL_FILENAME_PATTERN=${IC_EXTRN_MDL_FILENAME_PATTERN}
 export LBC_EXTRN_MDL_FILENAME_PATTERN_B=${IC_EXTRN_MDL_FILENAME_PATTERN_B}
@@ -163,6 +163,23 @@ case ${MACHINE} in
     export QUEUE="dev"
     export PARTITION=""
     export CLUSTER=""
+    ;;
+  "derecho")
+    export IC_EXTRN_MDL_BASEDIR="/glade/work/geguo/RRFS2_RETRO_DATA/May2024/GFS"
+    export LBC_EXTRN_MDL_BASEDIR=${IC_EXTRN_MDL_BASEDIR}
+    export OBSPATH="/glade/work/geguo/RRFS2_RETRO_DATA/May2024/obs_rap"
+    export OBSPATH_NSSLMOSAIC="/glade/work/geguo/RRFS2_RETRO_DATA/May2024/reflectivity"
+    export OBSPATH_AIRNOW="/glade/work/geguo/RRFS2_RETRO_DATA/May2024/airnow"
+    export ACCOUNT="ucuc0012"
+    export QUEUE="main"
+    export PARTITION=""
+    export NODES_IC="<nodes>1:ppn=120</nodes>"
+    export NODES_LBC="<nodes>1:ppn=120</nodes>"
+    export NODES_FCST="<nodes>1:ppn=120</nodes>"
+    export NODES_MPASSIT="<nodes>1:ppn=120</nodes>"
+    export NODES_UPP="<nodes>1:ppn=80</nodes>"
+    export NODES_JEDIVAR="<nodes>1:ppn=80</nodes>"
+    export NODES_IODA_MRMS_REFL="<nodes>1:ppn=80</nodes>"
     ;;
   *)
     echo "!!! unsupported platform:'${MACHINE}'!!!"

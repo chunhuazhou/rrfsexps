@@ -7,7 +7,6 @@ export DO_JEDI=false
 export DO_CYC=false
 export DO_SPINUP=false
 
-export CYC_INTERVAL=24
 export LBC_CYCS="00"  # evenly divide 24 hours, e.g., "00 12", "00 06 12 18", etc
 export COLDSTART_CYCS="00"
 
@@ -15,9 +14,10 @@ for i in {0..23}; do arr[i]="24"; done # 24hr fcst, only take effect at coldstar
 export FCST_LEN_HRS_CYCLES="${arr[*]}"
 export LBC_LENGTH=24
 export REALTIME=false
+export RETRO_CYCLETHROTTLE=1
 #
 # ---------------------------------------------
-export CHEM_GROUPS="smoke,dust" # any combinations of "smoke, anthro, pollen, dust, rwc"
+export CHEM_GROUPS="smoke" # any combinations of "smoke, anthro, pollen, dust, rwc"
 export EBB_DCYCLE=1
 export USE_EXTERNAL_CHEM_LBCS=true
 export USE_EXTERNAL_CHEM_ICS=false
