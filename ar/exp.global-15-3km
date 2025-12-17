@@ -145,12 +145,15 @@ case ${MACHINE} in
     export QUEUE="normal"
     export PARTITION="batch"
     export CLUSTER="c6"
-    export NODES_IC="<nodes>10:ppn=192</nodes>"
+    export NODES_IC="<nodes>10:ppn=160</nodes>"
     export NODES_FCST="<nodes>100:ppn=192</nodes>"
-    export NODES_MPASSIT="<nodes>1:ppn=160</nodes>"
-    export NODES_UPP="<nodes>1:ppn=80</nodes>"
+    export NODES_MPASSIT="<nodes>12:ppn=20</nodes>"
+    export NODES_UPP="<nodes>5:ppn=80</nodes>"
     export NODES_JEDIVAR="<nodes>20:ppn=40</nodes>"
-    ;;
+    export WALLTIME_FCST="6:00:00"
+    export WALLTIME_MPASSIT="3:00:00"
+    export WALLTIME_UPP="2:00:00"
+      ;;
   "wcoss2")
     export IC_EXTRN_MDL_BASEDIR="/lfs/h2/emc/lam/noscrub/RRFS2_RETRO_DATA/May2024/GFS"
     export LBC_EXTRN_MDL_BASEDIR=${IC_EXTRN_MDL_BASEDIR}
